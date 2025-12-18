@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>李易瞳 - 数据科学与大数据技术简历</title>
+    <!-- 引入Font Awesome图标库，增加视觉元素 -->
+    <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            /* 换用更现代的无衬线字体，提升质感 */
+            font-family: "Inter", "Microsoft YaHei", "Heiti SC", sans-serif;
+        }
+
+        body {
+            background: linear-gradient(180deg, #f5f7fa 0%, #eef2f7 100%);
+            color: #333;
+            line-height: 1.8;
+            padding: 30px 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+            /* 全局平滑滚动 */
+            scroll-behavior: smooth;
+        }
+
+        /* 头部渐变背景+精致阴影 */
+        header {
+            background: linear-gradient(135deg, #2c3e50 0%, #1a2530 100%);
+            color: white;
+            padding: 40px 0;
+            border-radius: 20px;
+            margin-bottom: 40px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* 头部装饰光点（提升高端感） */
+        header::before {
+            content: "";
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            width: 200px;
+            height: 200px;
+            background: rgba(52, 152, 219, 0.15);
+            border-radius: 50%;
+            filter: blur(80px);
+        }
+
+        .title {
+            text-align: center;
+            font-size: 32px;
+            margin-bottom: 20px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            position: relative;
+        }
+
+        /* 标题下方精致下划线 */
+        .title::after {
+            content: "";
+            display: block;
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, #3498db, #8e44ad);
+            margin: 10px auto 0;
+            border-radius: 3px;
+        }
+
+        /* 导航栏优化 - 下划线动画+间距调整 */
+        .nav-container {
+            text-align: center;
+            padding-top: 10px;
+        }
+
+        .nav-container a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            padding: 10px 20px;
+            border-radius: 30px;
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            position: relative;
+            margin: 0 5px;
+        }
+
+        /* 导航hover渐变背景+上浮+下划线 */
+        .nav-container a:hover {
+            background: linear-gradient(90deg, #3498db 0%, #2980b9 100%);
+            transform: translateY(-3px);
+            box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+        }
+
+        .nav-container a::after {
+            content: "";
+            position: absolute;
+            bottom: 5px;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: #fff;
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        .nav-container a:hover::after {
+            width: 60%;
+        }
+
+        /* 主体卡片：更圆润+细腻阴影+渐变边框 */
+        section {
+            background: #fff;
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 35px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            position: relative;
+            overflow: hidden;
+            /* 渐变边框效果（伪元素实现） */
+            border: 1px solid transparent;
+            background-clip: padding-box;
+        }
+
+        section::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: 20px;
+            padding: 1px;
+            background: linear-gradient(135deg, #3498db 0%, #8e44ad 100%);
+            -webkit-mask: 
+                linear-gradient(#fff 0 0) content-box, 
+                linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        /* 卡片hover：上浮+阴影强化+渐变边框显示 */
+        section:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+        }
+
+        section:hover::before {
+            opacity: 1;
+        }
+
+        /* 模块标题：渐变文字+精致下划线 */
+        h3 {
+            background: linear-gradient(90deg, #2c3e50 0%, #3498db 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            font-size: 24px;
+            margin-bottom: 25px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid #f0f4f8;
+            display: inline-block;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        /* 图标点缀（标题左侧） */
+        h3 i {
+            margin-right: 10px;
+            font-size: 22px;
+        }
+
+        /* 文本样式优化：字间距+行高+颜色层级 */
+        .uni-content, .profile-content, .skill-content, .project-content {
+            font-size: 16px;
+            color: #555;
+            line-height: 1.9;
+            letter-spacing: 0.3px;
+        }
+
+        .uni-info, .profile-content p, .project-item {
+            margin-bottom: 20px;
+        }
+
+        .uni-name, .project-name {
+            font-weight: 600;
+            color: #2c3e50;
+            font-size: 19px;
+            display: flex;
+            align-items: center;
+        }
+
+        /* 校名/项目名前加图标 */
+        .uni-name i, .project-name i {
+            color: #3498db;
+            margin-right: 10px;
+            font-size: 18px;
+        }
+
+        /* 技能列表：更精致的圆点+hover效果 */
+        .skill-list {
+            list-style: none;
+            margin-left: 10px;
+        }
+
+        .skill-list li {
+            margin-bottom: 15px;
+            position: relative;
+            padding-left: 30px;
+            transition: all 0.3s ease;
+        }
+
+        .skill-list li:hover {
+            transform: translateX(5px);
+            color: #3498db;
+        }
+
+        /* 自定义渐变圆点 */
+        .skill-list li:before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 10px;
+            width: 12px;
+            height: 12px;
+            background: linear-gradient(135deg, #3498db 0%, #8e44ad 100%);
+            border-radius: 50%;
+            box-shadow: 0 0 8px rgba(52, 152, 219, 0.3);
+        }
+
+        /* 项目项：左侧渐变竖线+hover高亮 */
+        .project-item {
+            padding-left: 20px;
+            border-left: 3px solid #f0f4f8;
+            transition: all 0.3s ease;
+        }
+
+        .project-item:hover {
+            border-left: 3px solid #3498db;
+            padding-left: 25px;
+        }
+
+        .project-item p {
+            color: #666;
+            font-size: 15px;
+        }
+
+        /* 返回顶部按钮：渐变+悬浮效果 */
+        .back-to-top {
+            display: inline-block;
+            margin-top: 20px;
+            color: #3498db;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 8px 15px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        .back-to-top i {
+            margin-right: 5px;
+            transition: transform 0.3s ease;
+        }
+
+        .back-to-top:hover {
+            color: #fff;
+            background: linear-gradient(90deg, #3498db 0%, #2980b9 100%);
+            text-decoration: none;
+            box-shadow: 0 3px 10px rgba(52, 152, 219, 0.2);
+        }
+
+        .back-to-top:hover i {
+            transform: translateY(-2px);
+        }
+
+        /* 响应式适配：更细腻的断点调整 */
+        @media (max-width: 768px) {
+            body {
+                padding: 20px 15px;
+            }
+
+            header {
+                padding: 30px 0;
+                border-radius: 15px;
+            }
+
+            .title {
+                font-size: 26px;
+            }
+
+            .nav-container a {
+                font-size: 16px;
+                padding: 8px 15px;
+                margin: 0 3px 10px;
+                display: inline-block;
+            }
+
+            section {
+                padding: 25px;
+                border-radius: 15px;
+                margin-bottom: 25px;
+            }
+
+            h3 {
+                font-size: 20px;
+            }
+
+            .uni-name, .project-name {
+                font-size: 17px;
+            }
+
+            .skill-list li {
+                padding-left: 25px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .title {
+                font-size: 22px;
+            }
+
+            .nav-container a {
+                font-size: 14px;
+                padding: 6px 12px;
+            }
+
+            section {
+                padding: 20px;
+            }
+
+            h3 {
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 顶部锚点 -->
+    <a name="顶部"></a>
+
+    <!-- 头部区域 -->
+    <header>
+        <div class="title">李易瞳的个人简历</div>
+        <!-- 导航栏（保留结构，增加图标） -->
+        <div class="nav-container">
+            <a href="#个人简介"><i class="fas fa-user"></i>个人简介</a>
+            <a href="#专业技能"><i class="fas fa-code"></i>专业技能</a>
+            <a href="#项目经历"><i class="fas fa-project-diagram"></i>项目经历</a>
+            <a href="#母校"><i class="fas fa-university"></i>大连海洋大学</a>
+        </div>
+    </header>
+
+    <!-- 个人简介模块 -->
+    <section>
+        <h3><a name="个人简介"></a><i class="fas fa-user-circle"></i>个人简介</h3>
+        <div class="profile-content">
+            <p>李易瞳，女/男，20岁，数据科学与大数据技术专业本科在读</p>
+            <p>现就读于大连海洋大学，专注于数据处理、数据分析与可视化方向学习</p>
+            <p>具备扎实的理论基础和实践能力，热衷于通过数据挖掘价值、解决实际问题</p>
+        </div>
+        <a href="#顶部" class="back-to-top"><i class="fas fa-arrow-up"></i>返回顶部</a>
+    </section>
+
+    <!-- 专业技能模块 -->
+    <section>
+        <h3><a name="专业技能"></a><i class="fas fa-laptop-code"></i>专业技能</h3>
+        <div class="skill-content">
+            <ul class="skill-list">
+                <li>熟练掌握Python数据分析工具栈：Pandas（数据处理）、NumPy（数值计算）、Matplotlib（数据可视化）</li>
+                <li>熟悉SQL语言，能够进行复杂查询、数据清洗、多表关联等数据库操作</li>
+                <li>了解Hadoop、Spark大数据框架基础原理及核心组件工作机制</li>
+                <li>具备数据预处理、特征工程、基本数据挖掘算法的应用能力</li>
+            </ul>
+        </div>
+        <a href="#顶部" class="back-to-top"><i class="fas fa-arrow-up"></i>返回顶部</a>
+    </section>
+
+    <!-- 项目经历模块 -->
+    <section>
+        <h3><a name="项目经历"></a><i class="fas fa-tasks"></i>项目经历</h3>
+        <div class="project-content">
+            <div class="project-item">
+                <div class="project-name"><i class="fas fa-chart-line"></i>海洋渔业数据趋势分析（校级竞赛项目）</div>
+                <p>项目职责：核心开发成员，负责数据清洗、分析与可视化工作</p>
+                <p>项目成果：使用Pandas清洗2018-2022年大连周边渔业捕捞数据，通过Matplotlib生成可视化图表，为渔业资源合理利用提供数据支撑，获校级竞赛三等奖</p>
+            </div>
+            <div class="project-item">
+                <div class="project-name"><i class="fas fa-calculator"></i>学生成绩数据分析工具</div>
+                <p>项目职责：独立开发，负责需求分析、代码实现与测试</p>
+                <p>项目成果：开发Python脚本实现Excel成绩自动导入、平均分统计、挂科率计算等自动化处理</p>
+            </div>
+        </div>
+        <a href="#顶部" class="back-to-top"><i class="fas fa-arrow-up"></i>返回顶部</a>
+    </section>
+
+    <!-- 母校模块 -->
+    <section>
+        <h3><a name="母校"></a><i class="fas fa-school"></i>母校 - 大连海洋大学</h3>
+        <div class="uni-content">
+            <div class="uni-info">
+                <div class="uni-name"><i class="fas fa-map-marker-alt"></i>大连海洋大学</div>
+                <p>大连海洋大学是我国北方地区唯一一所以海洋和水产学科为特色的多科性高等院校，学校坚持以海洋水产为特色，注重产学研结合，为国家海洋事业和水产行业培养了大批专业人才。</p>
+            </div>
+            <p>本人就读于数据科学与大数据技术专业，该专业依托学校在海洋领域的学科优势，融合数据科学与海洋特色，培养具备数据处理、分析及海洋领域应用能力的复合型人才。在校期间积极参与校级科研项目，利用学校提供的实验平台提升专业实践能力。</p>
+        </div>
+        <a href="#顶部" class="back-to-top"><i class="fas fa-arrow-up"></i>返回顶部</a>
+    </section>
+</body>
+</html>
